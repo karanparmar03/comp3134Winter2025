@@ -1,0 +1,13 @@
+SQL Injection Vulnerabilities Summary
+
+1) Using the page getusers_1.php, type the following value into the form: Ben
+Observations: 
+The query returns results for users with the first name "Ben" and active = 1. This is the expected behavior as no SQL injection was attempted.
+
+2) Using the page getusers_1.php, type the following value into the form: Ben'--
+Observations: 
+The SQL query is broken due to the SQL injection. The '--' causes the rest of the query to be commented out, which results in all users being returned instead of just those matching "Ben".
+
+3) Using the page getusers_1.php, type the following value into the form: Ben' OR 1=1
+Observations: 
+The query returns all users because `1=1` is always true, which bypasses the condition and makes the SQL query return all data from the table.
