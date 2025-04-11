@@ -1,0 +1,11 @@
+Stored XSS was tested using a simple PHP comment form where user input was written to a file and displayed back on the page without any sanitization.
+
+Malicious input like:
+<script>alert('Stored XSS!')</script>
+
+was submitted via the form, and every time the page reloaded, the script executed automatically.
+
+This confirmed a stored XSS vulnerability.
+
+Mitigation:
+To fix this, all user-submitted content should be sanitized using functions like htmlspecialchars() before displaying it on the page to prevent script execution.

